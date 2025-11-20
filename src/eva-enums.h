@@ -1,7 +1,36 @@
 #pragma once
 #include <cstdint>
 
+#define DEFINE_OPERATOR_OR(enum_type) \
+inline constexpr enum_type operator|(enum_type lhs, enum_type rhs)       \
+{ \
+    return (enum_type) ((uint32_t)lhs | (uint32_t)rhs); \
+}
+
+#define DEFINE_OPERATOR_OR_ASSIGN(enum_type) \
+inline enum_type& operator|=(enum_type& lhs, enum_type rhs)                \
+{ \
+    lhs = lhs | rhs; \
+    return lhs; \
+}
+
+
 namespace eva {
+
+
+enum class IMAGE_USAGE : uint32_t {
+    TRANSFER_SRC                        = 0x00000001,
+    TRANSFER_DST                        = 0x00000002,
+    SAMPLED                             = 0x00000004,
+    STORAGE                             = 0x00000008,
+    COLOR_ATTACHMENT                    = 0x00000010,
+    DEPTH_STENCIL_ATTACHMENT            = 0x00000020,
+    TRANSIENT_ATTACHMENT                = 0x00000040,
+    INPUT_ATTACHMENT                    = 0x00000080,
+    FRAGMENT_SHADING_RATE_ATTACHMENT    = 0x00000100,
+    HOST_TRANSFER                       = 0x00400000,
+};
+DEFINE_OPERATOR_OR(IMAGE_USAGE)
 
 
 enum class IMAGE_LAYOUT : uint32_t {
@@ -140,27 +169,45 @@ enum class FORMAT : uint32_t {
     MAX_ENUM = 0x7FFFFFFF
 };
 
-enum class SHADER_STAGE : uint32_t {
-    NONE                      = 0x00000000,
-    VERTEX                    = 0x00000001,
-    TESSELLATION_CONTROL      = 0x00000002,
-    TESSELLATION_EVALUATION   = 0x00000004,
-    GEOMETRY                  = 0x00000008,
-    FRAGMENT                  = 0x00000010,
-    ALL_GRAPHICS              = 0x0000001F,
-    COMPUTE                   = 0x00000020,
-    TASK                      = 0x00000040,
-    MESH                      = 0x00000080,
-    RAYGEN                    = 0x00000100,
-    ANY_HIT                   = 0x00000200,
-    CLOSEST_HIT               = 0x00000400,
-    MISS                      = 0x00000800,
-    INTERSECTION              = 0x00001000,
-    CALLABLE                  = 0x00002000,
-    ALL                       = 0x7FFFFFFF,
+
+enum class IMAGE_TILING : uint32_t {
+    OPTIMAL = 0,
+    LINEAR = 1,
+    MAX_ENUM = 0x7FFFFFFF,
 };
-inline constexpr SHADER_STAGE operator|(SHADER_STAGE lhs, SHADER_STAGE rhs)         { return (SHADER_STAGE) ((uint32_t)lhs | (uint32_t)rhs); }
-inline SHADER_STAGE& operator|=(SHADER_STAGE& lhs, SHADER_STAGE rhs)                { lhs = lhs | rhs; return lhs; }
+
+
+enum class IMAGE_TYPE : uint32_t {
+    _1D = 0,
+    _2D = 1,
+    _3D = 2,
+    MAX_ENUM = 0x7FFFFFFF,
+};
+
+
+enum class COMPONENT_SWIZZLE : uint32_t {
+    IDENTITY = 0,
+    ZERO = 1,
+    ONE = 2,
+    R = 3,
+    G = 4,
+    B = 5,
+    A = 6,
+    MAX_ENUM = 0x7FFFFFFF,
+};
+DEFINE_OPERATOR_OR(COMPONENT_SWIZZLE)
+
+
+enum class IMAGE_VIEW_TYPE : uint32_t {
+    _1D = 0,
+    _2D = 1,
+    _3D = 2,
+    CUBE = 3,
+    _1D_ARRAY = 4,
+    _2D_ARRAY = 5,
+    CUBE_ARRAY = 6,
+    MAX_ENUM = 0x7FFFFFFF,
+};
 
 
 enum class DESCRIPTOR_TYPE : uint32_t {
@@ -180,52 +227,6 @@ enum class DESCRIPTOR_TYPE : uint32_t {
     MAX_ENUM                        = 0x7FFFFFFF,
 };
 
-
-enum class PIPELINE_STAGE : uint64_t {
-    NONE                              =              0ULL,
-    TOP_OF_PIPE                       =     0x00000001ULL,
-    DRAW_INDIRECT                     =     0x00000002ULL,
-    VERTEX_INPUT                      =     0x00000004ULL,
-    VERTEX_SHADER                     =     0x00000008ULL,
-    TESSELLATION_CONTROL_SHADER       =     0x00000010ULL,
-    TESSELLATION_EVALUATION_SHADER    =     0x00000020ULL,
-    GEOMETRY_SHADER                   =     0x00000040ULL,
-    FRAGMENT_SHADER                   =     0x00000080ULL,
-    EARLY_FRAGMENT_TESTS              =     0x00000100ULL,
-    LATE_FRAGMENT_TESTS               =     0x00000200ULL,
-    COLOR_ATTACHMENT_OUTPUT           =     0x00000400ULL,
-    COMPUTE_SHADER                    =     0x00000800ULL,
-    TRANSFER                          =     0x00001000ULL,
-    BOTTOM_OF_PIPE                    =     0x00002000ULL,
-    HOST                              =     0x00004000ULL,
-    ALL_GRAPHICS                      =     0x00008000ULL,
-    ALL_COMMANDS                      =     0x00010000ULL,
-    COMMAND_PREPROCESS                =     0x00020000ULL,
-    CONDITIONAL_RENDERING             =     0x00040000ULL,
-    TASK_SHADER                       =     0x00080000ULL,
-    MESH_SHADER                       =     0x00100000ULL,
-    RAY_TRACING_SHADER                =     0x00200000ULL,
-    FRAGMENT_SHADING_RATE_ATTACHMENT  =     0x00400000ULL,
-    FRAGMENT_DENSITY_PROCESS          =     0x00800000ULL,
-    TRANSFORM_FEEDBACK                =     0x01000000ULL,
-    ACCELERATION_STRUCTURE_BUILD      =     0x02000000ULL,
-#ifdef VULKAN_VERSION_1_3
-    VIDEO_DECODE                      =     0x04000000ULL,
-    VIDEO_ENCODE                      =     0x08000000ULL,
-    ACCELERATION_STRUCTURE_COPY       =     0x10000000ULL,
-    OPTICAL_FLOW                      =     0x20000000ULL,
-    MICROMAP_BUILD                    =     0x40000000ULL,
-    COPY                              =    0x100000000ULL,
-    RESOLVE                           =    0x200000000ULL,
-    BLIT                              =    0x400000000ULL,
-    CLEAR                             =    0x800000000ULL,
-    INDEX_INPUT                       =   0x1000000000ULL,
-    VERTEX_ATTRIBUTE_INPUT            =   0x2000000000ULL,
-    PRE_RASTERIZATION_SHADERS         =   0x4000000000ULL,
-    CONVERT_COOPERATIVE_VECTOR_MATRIX = 0x100000000000ULL,
-#endif
-};
-inline constexpr PIPELINE_STAGE operator|(PIPELINE_STAGE lhs, PIPELINE_STAGE rhs)   { return (PIPELINE_STAGE) ((uint64_t)lhs | (uint64_t)rhs); }
 
 
 enum class ACCESS : uint64_t {
@@ -274,7 +275,124 @@ enum class ACCESS : uint64_t {
     MICROMAP_WRITE                        = 0x200000000000ULL,
 #endif
 };
-inline constexpr ACCESS operator|(ACCESS lhs, ACCESS rhs)       { return (ACCESS) ((uint64_t)lhs | (uint64_t)rhs); }
+DEFINE_OPERATOR_OR(ACCESS)
+
+
+enum class IMAGE_USAGE : uint32_t {
+    VK_IMAGE_USAGE_TRANSFER_SRC_BIT = 0x00000001,
+    VK_IMAGE_USAGE_TRANSFER_DST_BIT = 0x00000002,
+    VK_IMAGE_USAGE_SAMPLED_BIT = 0x00000004,
+    VK_IMAGE_USAGE_STORAGE_BIT = 0x00000008,
+    VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT = 0x00000010,
+    VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT = 0x00000020,
+    VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT = 0x00000040,
+    VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT = 0x00000080,
+    VK_IMAGE_USAGE_HOST_TRANSFER_BIT = 0x00400000,
+    VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR = 0x00000400,
+    VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR = 0x00000800,
+    VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR = 0x00001000,
+    VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT = 0x00000200,
+    VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = 0x00000100,
+    VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR = 0x00002000,
+    VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR = 0x00004000,
+    VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR = 0x00008000,
+    VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT = 0x00080000,
+    VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI = 0x00040000,
+    VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM = 0x00100000,
+    VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM = 0x00200000,
+    VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM = 0x00800000,
+    VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM = 0x08000000,
+    VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR = 0x02000000,
+    VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR = 0x04000000,
+    VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV = VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR,
+    VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT = VK_IMAGE_USAGE_HOST_TRANSFER_BIT,
+    VK_IMAGE_USAGE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
+};
+
+
+enum class IMAGE_TILING : uint32_t {
+};
+
+
+enum class IMAGE_TILING : uint32_t {
+};
+
+
+enum class IMAGE_TILING : uint32_t {
+};
+
+
+enum class SHADER_STAGE : uint32_t {
+    NONE                      = 0x00000000,
+    VERTEX                    = 0x00000001,
+    TESSELLATION_CONTROL      = 0x00000002,
+    TESSELLATION_EVALUATION   = 0x00000004,
+    GEOMETRY                  = 0x00000008,
+    FRAGMENT                  = 0x00000010,
+    ALL_GRAPHICS              = 0x0000001F,
+    COMPUTE                   = 0x00000020,
+    TASK                      = 0x00000040,
+    MESH                      = 0x00000080,
+    RAYGEN                    = 0x00000100,
+    ANY_HIT                   = 0x00000200,
+    CLOSEST_HIT               = 0x00000400,
+    MISS                      = 0x00000800,
+    INTERSECTION              = 0x00001000,
+    CALLABLE                  = 0x00002000,
+    ALL                       = 0x7FFFFFFF,
+};
+DEFINE_OPERATOR_OR(SHADER_STAGE)
+DEFINE_OPERATOR_OR_ASSIGN(SHADER_STAGE)
+
+
+
+
+
+enum class PIPELINE_STAGE : uint64_t {
+    NONE                              =              0ULL,
+    TOP_OF_PIPE                       =     0x00000001ULL,
+    DRAW_INDIRECT                     =     0x00000002ULL,
+    VERTEX_INPUT                      =     0x00000004ULL,
+    VERTEX_SHADER                     =     0x00000008ULL,
+    TESSELLATION_CONTROL_SHADER       =     0x00000010ULL,
+    TESSELLATION_EVALUATION_SHADER    =     0x00000020ULL,
+    GEOMETRY_SHADER                   =     0x00000040ULL,
+    FRAGMENT_SHADER                   =     0x00000080ULL,
+    EARLY_FRAGMENT_TESTS              =     0x00000100ULL,
+    LATE_FRAGMENT_TESTS               =     0x00000200ULL,
+    COLOR_ATTACHMENT_OUTPUT           =     0x00000400ULL,
+    COMPUTE_SHADER                    =     0x00000800ULL,
+    TRANSFER                          =     0x00001000ULL,
+    BOTTOM_OF_PIPE                    =     0x00002000ULL,
+    HOST                              =     0x00004000ULL,
+    ALL_GRAPHICS                      =     0x00008000ULL,
+    ALL_COMMANDS                      =     0x00010000ULL,
+    COMMAND_PREPROCESS                =     0x00020000ULL,
+    CONDITIONAL_RENDERING             =     0x00040000ULL,
+    TASK_SHADER                       =     0x00080000ULL,
+    MESH_SHADER                       =     0x00100000ULL,
+    RAY_TRACING_SHADER                =     0x00200000ULL,
+    FRAGMENT_SHADING_RATE_ATTACHMENT  =     0x00400000ULL,
+    FRAGMENT_DENSITY_PROCESS          =     0x00800000ULL,
+    TRANSFORM_FEEDBACK                =     0x01000000ULL,
+    ACCELERATION_STRUCTURE_BUILD      =     0x02000000ULL,
+#ifdef VULKAN_VERSION_1_3
+    VIDEO_DECODE                      =     0x04000000ULL,
+    VIDEO_ENCODE                      =     0x08000000ULL,
+    ACCELERATION_STRUCTURE_COPY       =     0x10000000ULL,
+    OPTICAL_FLOW                      =     0x20000000ULL,
+    MICROMAP_BUILD                    =     0x40000000ULL,
+    COPY                              =    0x100000000ULL,
+    RESOLVE                           =    0x200000000ULL,
+    BLIT                              =    0x400000000ULL,
+    CLEAR                             =    0x800000000ULL,
+    INDEX_INPUT                       =   0x1000000000ULL,
+    VERTEX_ATTRIBUTE_INPUT            =   0x2000000000ULL,
+    PRE_RASTERIZATION_SHADERS         =   0x4000000000ULL,
+    CONVERT_COOPERATIVE_VECTOR_MATRIX = 0x100000000000ULL,
+#endif
+};
+DEFINE_OPERATOR_OR(PIPELINE_STAGE)
 
 
 
