@@ -7,14 +7,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Library source files
 set(VE_SOURCES
-    vulkanApp.cpp
-    spirvHelpers.cpp
+    src/vulkanApp.cpp
+    src/spirvHelpers.cpp
 )
 
 set(VE_HEADERS
-    vulkanApp.h
-    error.h
-    templateHelper.h
+    src/vulkanApp.h
+    src/error.h
+    src/templateHelper.h
 )
 
 # Create static library
@@ -92,7 +92,7 @@ endif()
 # Include directories
 target_include_directories(ve
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
         ${Vulkan_INCLUDE_DIRS}
 )
 
