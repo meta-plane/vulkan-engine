@@ -14,206 +14,11 @@ static Device device = Runtime::get().device({
     .enableRaytracing = true
 });
 
-
-const char* src_rgen = R"(
-#version 460
-#extension GL_EXT_ray_tracing : enable
-
-layout(binding = 0) uniform accelerationStructureEXT topLevelAS;
-layout(binding = 1, rgba8) uniform image2D image;
-layout(binding = 2) uniform CameraProperties
-{
-    vec3 cameraPos;
-    float yFov_degree;
-    vec3 cameraX;
-    float padding1;
-    vec3 cameraY;
-    float padding2;
-    vec3 cameraZ;
-} g;
-
-layout(location = 0) rayPayloadEXT vec3 hitValue;
-
-void main()
-{
-    const float aspect_y = tan(radians(g.yFov_degree) * 0.5);
-    const float aspect_x = aspect_y * float(gl_LaunchSizeEXT.x) / float(gl_LaunchSizeEXT.y);
-
-    const vec2 screenCoord = vec2(gl_LaunchIDEXT.xy) + vec2(0.5);
-    const vec2 ndc = screenCoord/vec2(gl_LaunchSizeEXT.xy) * 2.0 - 1.0;
-    vec3 rayDir = ndc.x*aspect_x*g.cameraX + ndc.y*aspect_y*g.cameraY + g.cameraZ;
-
-    hitValue = vec3(0.0);
-
-    traceRayEXT(
-        topLevelAS,                         // topLevel
-        gl_RayFlagsOpaqueEXT, 0xff,         // rayFlags, cullMask
-        0, 1, 0,                            // sbtRecordOffset, sbtRecordStride, missIndex
-        g.cameraPos, 0.0, rayDir, 100.0,    // origin, tmin, direction, tmax
-        0);                                 // payload
-
-    imageStore(image, ivec2(gl_LaunchIDEXT.xy), vec4(hitValue, 0.0));
-})";
-
-const char* src_miss = R"(
-#version 460
-#extension GL_EXT_ray_tracing : enable
-
-layout(location = 0) rayPayloadInEXT vec3 hitValue;
-
-void main()
-{
-    hitValue = vec3(0.0, 0.0, 0.2);
-})";
-
-const char* src_chit = R"(
-#version 460
-#extension GL_EXT_ray_tracing : require
-
-hitAttributeEXT vec3 attribs;   // intersection shader에서 넘긴 hit attribute
-layout(location = 0) rayPayloadInEXT vec3 rayPayload;
-
-void main()
-{
-    vec3 normalColor = attribs * 0.5 + 0.5;
-    rayPayload = normalColor;
-}
-)";
-
-/*
- * From [Table 69. Required Limits] in the spec:
- * 0. shaderGroupHandleSize — Supported limit: 32 bytes, Limit type: exact
- *   Therefore, a 32-byte size for shader group handles is guaranteed across all platforms.
- * 1. shaderGroupHandleAlignment — Supported limit: 32 bytes, Limit type: max
- *   Therefore, a 32-byte alignment for shader records is guaranteed across all platforms.
- * 2. maxShaderGroupStride — Supported limit: 4096 bytes, Limit type: min
- *   Therefore, a minimum size of 4096 bytes for shader records is guaranteed across all platforms.
- */
-const char* src_isec_sphere = R"(
-#version 460
-#extension GL_EXT_ray_tracing : require
-
-hitAttributeEXT vec3 attribs; 
-
-// For tighter packing, only use float types
-struct Sphere {
-    float  x, y, z;
-    float radius;
-};
-
-// 플랫폼 상관없이 최소한 (4096-32)/16 = 254 sphere 데이터를 넣을 수 있음 
-// (실제로는 훨씬 많이 가능: (maxShaderGroupStride-shaderGroupHandleSize) / sizeof(Sphere))
-layout(shaderRecordEXT) buffer SphereRecord {
-    Sphere record[254];   
-};
-
-void main() 
-{
-    vec3 center = vec3(
-        record[gl_PrimitiveID].x, 
-        record[gl_PrimitiveID].y, 
-        record[gl_PrimitiveID].z);
-    float radius = record[gl_PrimitiveID].radius;
-
-    vec3 O = gl_WorldRayOriginEXT;
-    vec3 D = gl_WorldRayDirectionEXT;
-
-    vec3 oc = O - center;
-    float a = dot(D, D); 
-    float b = dot(oc, D);
-    float c = dot(oc, oc) - radius * radius;
-
-    float disc = b*b - a*c;
-    if (disc < 0.0) 
-        return;
-
-    float sqrtDisc = sqrt(disc);
-    float t0 = (-b - sqrtDisc) / a;
-    float t1 = (-b + sqrtDisc) / a;
-
-    float tMin = gl_RayTminEXT;
-    float tMax = gl_RayTmaxEXT;
-
-    float tHit = (t0 > tMin && t0 < tMax) ? t0 :
-                 (t1 > tMin && t1 < tMax) ? t1 : -1.0;
-
-    if (tHit > 0.0) 
-    {
-        vec3 hitPos = O + tHit * D;
-        attribs = normalize(hitPos - center);   
-
-        if (reportIntersectionEXT(tHit, 0)) 
-        {
-        }
-    }
-}
-)";
-
-const char* src_isec_cylinder = R"(
-#version 460
-#extension GL_EXT_ray_tracing : require
-
-hitAttributeEXT vec3 attribs;
-
-struct Cylinder {
-    float x, y, z;
-    float radius;
-    float height;
-};
-
-layout(shaderRecordEXT) buffer CylinderRecord {
-    Cylinder record[200];  
-};
-
-void main()
-{
-    vec3 center = vec3(
-        record[gl_PrimitiveID].x, 
-        record[gl_PrimitiveID].y, 
-        record[gl_PrimitiveID].z);
-    float radius = record[gl_PrimitiveID].radius;
-    float height = record[gl_PrimitiveID].height;
-
-    vec3 O = gl_WorldRayOriginEXT - center;
-    vec3 D = gl_WorldRayDirectionEXT;
-
-    float a = D.x*D.x + D.z*D.z;
-    float b = 2.0 * (O.x*D.x + O.z*D.z);
-    float c = O.x*O.x + O.z*O.z - radius*radius;
-
-    float disc = b*b - 4.0*a*c;
-    if (disc < 0.0 || a == 0.0) return;
-
-    float sqrtDisc = sqrt(disc);
-    float t0 = (-b - sqrtDisc) / (2.0*a);
-    float t1 = (-b + sqrtDisc) / (2.0*a);
-
-    float tHit = -1.0;
-    if (t0 > gl_RayTminEXT && t0 < gl_RayTmaxEXT) {
-        float y = O.y + t0 * D.y;
-        if (abs(y) <= height * 0.5) tHit = t0;
-    }
-    if (tHit < 0.0 && t1 > gl_RayTminEXT && t1 < gl_RayTmaxEXT) {
-        float y = O.y + t1 * D.y;
-        if (abs(y) <= height * 0.5) tHit = t1;
-    }
-
-    if (tHit > 0.0) {
-        vec3 hitPos = O + tHit * D;
-        attribs = normalize(vec3(hitPos.x, 0.0, hitPos.z)); // Y축 원기둥의 접선면 법선
-
-        if (reportIntersectionEXT(tHit, 0)) 
-        {
-        }
-    }
-}
-)";
-
 struct Sphere {
     float center[3];
     float radius;
 
-    inline static const char* isecSrc = src_isec_sphere;
+    inline static const char* isecSrc = SHADER_OUTPUT_DIR"/sphere.rint.spv";
 
     Sphere(float x, float y, float z, float r) 
     : center{x, y, z}, radius(r) {}
@@ -230,7 +35,7 @@ struct Cylinder {
     float radius;
     float height;
 
-    inline static const char* isecSrc = src_isec_cylinder;
+    inline static const char* isecSrc = SHADER_OUTPUT_DIR"/cylinder.rint.spv";
     
     Cylinder(float x, float y, float z, float r, float h) 
     : center{x, y, z}, radius(r), height(h) {}
@@ -263,7 +68,7 @@ static InputEngine inputEngine;
 static FpsCamera camera;
 
 
-void main()
+int main()
 {
     Window window = Runtime::get().createWindow({
         .title = "Vulkan Window",
@@ -486,17 +291,19 @@ void main()
     //////////////////////////////////////////////////////////////////////////////
     // Raytracing pipeline creation
     //////////////////////////////////////////////////////////////////////////////
+    SpvBlob blob_chit = SpvBlob::readFrom(SHADER_OUTPUT_DIR"/chit.rchit.spv");
+    
     auto rtPipeline = device.createRaytracingPipeline({
-        .rgenStage = src_rgen,
-        .missStages = { src_miss },
+        .rgenStage = SpvBlob::readFrom(SHADER_OUTPUT_DIR"/raygen.rgen.spv"),
+        .missStages = { SpvBlob::readFrom(SHADER_OUTPUT_DIR"/miss.rmiss.spv") },
         .hitGroups = {
             {
-                .chitStage = src_chit,
-                .isecStage = Sphere::isecSrc,
+                .chitStage = blob_chit,
+                .isecStage = SpvBlob::readFrom(Sphere::isecSrc),
             },
             {
-                .chitStage = src_chit,
-                .isecStage = Cylinder::isecSrc
+                .chitStage = blob_chit,
+                .isecStage = SpvBlob::readFrom(Cylinder::isecSrc)
             }
         },
         .maxRecursionDepth = 1,
@@ -704,4 +511,6 @@ void main()
     }
 
     queue.waitIdle();
+
+    return 0;
 }

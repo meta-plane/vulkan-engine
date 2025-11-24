@@ -1,0 +1,15 @@
+*
+!.gitignore
+!.gitmodules
+!README.md
+
+!CMakeLists.txt
+
+!src/
+!src/**
+
+!external/
+!external/**
+
+!samples/
+!samples/**

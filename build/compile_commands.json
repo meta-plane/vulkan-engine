@@ -1,0 +1,152 @@
+[
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_INCLUDE_VULKAN -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\src -IC:\\VulkanSDK\\1.4.328.1\\Include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\SPIRV-Reflect /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++latest -MDd /FoCMakeFiles\\eva.dir\\src\\eva-runtime.cpp.obj /FdCMakeFiles\\eva.dir\\eva.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\src\\eva-runtime.cpp",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\src\\eva-runtime.cpp",
+  "output": "CMakeFiles\\eva.dir\\src\\eva-runtime.cpp.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_INCLUDE_VULKAN -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\src -IC:\\VulkanSDK\\1.4.328.1\\Include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\SPIRV-Reflect /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++latest -MDd /FoCMakeFiles\\eva.dir\\src\\eva-spirv-reflect.cpp.obj /FdCMakeFiles\\eva.dir\\eva.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\src\\eva-spirv-reflect.cpp",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\src\\eva-spirv-reflect.cpp",
+  "output": "CMakeFiles\\eva.dir\\src\\eva-spirv-reflect.cpp.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\context.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\context.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\context.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\context.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\init.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\init.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\init.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\init.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\input.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\input.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\input.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\input.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\monitor.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\monitor.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\monitor.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\monitor.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\platform.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\platform.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\platform.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\platform.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\vulkan.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\vulkan.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\vulkan.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\vulkan.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\window.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\window.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\window.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\window.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\egl_context.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\egl_context.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\egl_context.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\egl_context.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\osmesa_context.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\osmesa_context.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\osmesa_context.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\osmesa_context.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\null_init.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\null_init.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\null_init.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_init.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\null_monitor.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\null_monitor.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\null_monitor.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_monitor.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\null_window.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\null_window.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\null_window.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_window.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\null_joystick.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\null_joystick.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\null_joystick.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_joystick.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_module.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_module.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_module.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_module.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_time.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_time.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_time.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_time.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_thread.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_thread.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_thread.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_thread.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_init.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_init.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_init.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_init.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_joystick.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_joystick.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_joystick.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_joystick.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_monitor.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_monitor.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_monitor.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_monitor.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_window.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_window.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\win32_window.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_window.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\build\\external\\glfw\\src /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3 /Foexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\wgl_context.c.obj /Fdexternal\\glfw\\src\\CMakeFiles\\glfw.dir\\glfw.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\wgl_context.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\src\\wgl_context.c",
+  "output": "external\\glfw\\src\\CMakeFiles\\glfw.dir\\wgl_context.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\SPIRV-Reflect /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /Foexternal\\SPIRV-Reflect\\CMakeFiles\\spirv-reflect-static.dir\\spirv_reflect.c.obj /Fdexternal\\SPIRV-Reflect\\CMakeFiles\\spirv-reflect-static.dir\\spirv-reflect-static.pdb /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\SPIRV-Reflect\\spirv_reflect.c",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\SPIRV-Reflect\\spirv_reflect.c",
+  "output": "external\\SPIRV-Reflect\\CMakeFiles\\spirv-reflect-static.dir\\spirv_reflect.c.obj"
+},
+{
+  "directory": "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+  "command": "C:\\PROGRA~1\\MICROS~3\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_INCLUDE_VULKAN -DPROJECT_CURRENT_DIR=\\\"C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/samples/raytracing\\\" -DSHADER_OUTPUT_DIR=\\\"C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build/samples/raytracing/shaders\\\" -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\samples\\raytracing -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\src -IC:\\VulkanSDK\\1.4.328.1\\Include -IC:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\external\\glfw\\include /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++latest -MDd /Fosamples\\raytracing\\CMakeFiles\\raytracing.dir\\main.cpp.obj /Fdsamples\\raytracing\\CMakeFiles\\raytracing.dir\\ /FS -c C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\samples\\raytracing\\main.cpp",
+  "file": "C:\\Users\\phgph\\Desktop\\Vulkan-Raytracing-Lectures\\external\\eva\\samples\\raytracing\\main.cpp",
+  "output": "samples\\raytracing\\CMakeFiles\\raytracing.dir\\main.cpp.obj"
+}
+]

@@ -5,21 +5,35 @@
 #include <map>
 #include <unordered_map>
 #include <set>
-#include <ranges>   // std::views::filter
 #include <algorithm>// std::all_of, std::any_of
 #include <fstream>
-#include "error.h"
+#include "eva-error.h"
 #include "eva-native-factory.h"
 #include "eva-runtime.h"
 
 // #define USE_DEBUG_PRINTF 1
 
 
-eva::SpvBlob glsl2spv(VkShaderStageFlags stage, const char* shaderSource);
-void* createReflectShaderModule(const eva::SpvBlob spvBlob);
+void* createReflectShaderModule(const eva::SpvBlob& spvBlob);
 void destroyReflectShaderModule(void* pModule);
 eva::PipelineLayoutDesc extractPipelineLayoutDesc(const void* pModule);
 std::array<uint32_t, 3> extractWorkGroupSize(const void* pModule);
+
+eva::SpvBlob eva::SpvBlob::readFrom(const char* filepath)
+{
+    FILE* file = fopen(filepath, "rb");
+    fseek(file, 0, SEEK_END);
+    size_t fileSize = ftell(file);
+    fseek(file, 0, SEEK_SET);
+
+    // uint32_t[]로 직접 할당 (정렬 보장)
+    size_t uint32Count = (fileSize + 3) / 4; // 4바이트 단위로 올림
+    std::shared_ptr<uint32_t[]> data(new uint32_t[uint32Count]);
+    fread(data.get(), 1, fileSize, file);
+    fclose(file);
+    
+    return { data, fileSize };
+}
 
 
 PFN_vkGetBufferDeviceAddressKHR vkGetBufferDeviceAddressKHR_ = nullptr;
@@ -2192,32 +2206,18 @@ Semaphore Device::createSemaphore()
 /////////////////////////////////////////////////////////////////////////////////////////
 ShaderModule Device::createShaderModule(const ShaderModuleCreateInfo& info)
 {
-    SpvBlob spvBlob;
-    bool doCompile = false;
-
-    if (std::holds_alternative<const char*>(info.src)) 
-    {
-        spvBlob = glsl2spv((uint32_t)info.stage, std::get<const char*>(info.src));
-        doCompile = true;
-    }
-    else 
-        spvBlob = std::get<SpvBlob>(info.src);
-
     VkShaderModule vkHandle = create<VkShaderModule>(impl().vkDevice, {
         .sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO,
-        .codeSize = spvBlob.second,
-        .pCode = spvBlob.first,
+        .codeSize = info.spv.sizeInBytes,
+        .pCode = info.spv.data.get(),
     });
 
     auto pImpl = new ShaderModule::Impl(
-        impl().vkDevice, 
-        vkHandle, 
+        impl().vkDevice,
+        vkHandle,
         info.stage,
-        info.withSpirvReflect ? createReflectShaderModule(spvBlob) : nullptr
+        info.withSpirvReflect ? createReflectShaderModule(info.spv) : nullptr
     );
-
-    if (doCompile)
-        delete [] spvBlob.first;
 
     return *impl().shaderModules.insert(new ShaderModule::Impl*(pImpl)).first;
 }
@@ -2248,11 +2248,8 @@ static inline uint64_t to_uint64(const ShaderInput& shader) noexcept
     if (auto* m = std::get_if<ShaderModule>(&shader))
         return (uint64_t) *m;
 
-    if (auto* txt = std::get_if<const char*>(&shader))
-        return (uint64_t) *txt;
-
     const SpvBlob& blob = std::get<SpvBlob>(shader);
-    return (uint64_t) blob.first;
+    return (uint64_t) blob.data.get();
 }
 
 static inline bool operator==(const ShaderInput& a, const ShaderInput& b) noexcept
@@ -2379,9 +2376,7 @@ ComputePipeline Device::createComputePipeline(const ComputePipelineCreateInfo& i
     {
         csModule = createShaderModule({ 
             .stage = SHADER_STAGE::COMPUTE, 
-            .src = std::holds_alternative<const char*>(*info.csStage.shader) ? 
-                decltype(ShaderModuleCreateInfo::src)(std::get<const char*>(*info.csStage.shader)) : 
-                decltype(ShaderModuleCreateInfo::src)(std::get<SpvBlob>(*info.csStage.shader)), 
+            .spv = std::get<SpvBlob>(*info.csStage.shader), 
             .withSpirvReflect = useReflect, 
         });
         createTempModule = true;
@@ -2487,9 +2482,7 @@ RaytracingPipeline Device::createRaytracingPipeline(const RaytracingPipelineCrea
 
         ShaderModule m = createShaderModule({
             .stage = stage,
-            .src = std::get_if<const char*>(&src)
-                ? decltype(ShaderModuleCreateInfo::src)(std::get<const char*>(src))
-                : decltype(ShaderModuleCreateInfo::src)(std::get<SpvBlob>(src)),
+            .spv = std::get<SpvBlob>(src),
             .withSpirvReflect = reflect,
         });
         return {m, true};

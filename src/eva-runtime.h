@@ -883,19 +883,21 @@ struct CopyRegion {
 };
 
 
+struct SpvBlob {
+    std::shared_ptr<uint32_t[]> data;
+    size_t sizeInBytes; // in bytes
 
-
-
-using SpvBlob = std::pair<uint32_t*, size_t>; // (data, size in bytes)
+    static SpvBlob readFrom(const char* filepath);
+};
 
 
 struct ShaderModuleCreateInfo {
     SHADER_STAGE stage;
-    std::variant<const char*, SpvBlob> src;
+    const SpvBlob& spv;
     bool withSpirvReflect = true;
 };
 
-using ShaderInput = std::variant<const char*, SpvBlob, ShaderModule>;
+using ShaderInput = std::variant<SpvBlob, ShaderModule>;
 
 
 template <uint32_t ID, typename T>

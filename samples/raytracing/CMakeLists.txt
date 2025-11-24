@@ -15,6 +15,8 @@ add_executable(${PROJECT_NAME}
     shaders/raygen.rgen
     shaders/miss.rmiss
     shaders/chit.rchit
+    shaders/sphere.rint
+    shaders/cylinder.rint
 )
 
 # Auto-detect and compile shaders

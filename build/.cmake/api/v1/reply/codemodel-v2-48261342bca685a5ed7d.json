@@ -1,0 +1,210 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "external/glfw",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-external.glfw-Debug-32262a0c72daaba76ac5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "external/glfw"
+				},
+				{
+					"build" : "external/glfw/src",
+					"jsonFile" : "directory-external.glfw.src-Debug-1c6013c09899f4bbf608.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "external/glfw/src",
+					"targetIndexes" : 
+					[
+						1,
+						5
+					]
+				},
+				{
+					"build" : "external/SPIRV-Reflect",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-external.SPIRV-Reflect-Debug-ad9b732d068a61b303ca.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "external/SPIRV-Reflect",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "samples/raytracing",
+					"jsonFile" : "directory-samples.raytracing-Debug-7a2dc30c6fa1d484ed92.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "samples/raytracing",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "eva",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "spirv-reflect",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "raytracing",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "eva::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-eva-Debug-77cfe350a419e2296882.json",
+					"name" : "eva",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "glfw::@ca12bac854c2ac6b2230",
+					"jsonFile" : "target-glfw-Debug-c018b28ce794a3f38735.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "raytracing::@4382e5d23ae5018b2f74",
+					"jsonFile" : "target-raytracing-Debug-78be78a71a7a085d8e97.json",
+					"name" : "raytracing",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "raytracing_shaders::@4382e5d23ae5018b2f74",
+					"jsonFile" : "target-raytracing_shaders-Debug-819842ec47278c3bc8f1.json",
+					"name" : "raytracing_shaders",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "spirv-reflect-static::@20bf84040e3417563c86",
+					"jsonFile" : "target-spirv-reflect-static-Debug-724c713ce4e30f449ac1.json",
+					"name" : "spirv-reflect-static",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "update_mappings::@ca12bac854c2ac6b2230",
+					"jsonFile" : "target-update_mappings-Debug-9d9331c4eeefd42d5b69.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva/build",
+		"source" : "C:/Users/phgph/Desktop/Vulkan-Raytracing-Lectures/external/eva"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

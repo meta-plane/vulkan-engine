@@ -1,0 +1,57 @@
+#version 460
+#extension GL_EXT_ray_tracing : require
+
+hitAttributeEXT vec3 attribs;
+
+struct Cylinder {
+    float x, y, z;
+    float radius;
+    float height;
+};
+
+layout(shaderRecordEXT) buffer CylinderRecord {
+    Cylinder record[200];  
+};
+
+void main()
+{
+    vec3 center = vec3(
+        record[gl_PrimitiveID].x, 
+        record[gl_PrimitiveID].y, 
+        record[gl_PrimitiveID].z);
+    float radius = record[gl_PrimitiveID].radius;
+    float height = record[gl_PrimitiveID].height;
+
+    vec3 O = gl_WorldRayOriginEXT - center;
+    vec3 D = gl_WorldRayDirectionEXT;
+
+    float a = D.x*D.x + D.z*D.z;
+    float b = 2.0 * (O.x*D.x + O.z*D.z);
+    float c = O.x*O.x + O.z*O.z - radius*radius;
+
+    float disc = b*b - 4.0*a*c;
+    if (disc < 0.0 || a == 0.0) return;
+
+    float sqrtDisc = sqrt(disc);
+    float t0 = (-b - sqrtDisc) / (2.0*a);
+    float t1 = (-b + sqrtDisc) / (2.0*a);
+
+    float tHit = -1.0;
+    if (t0 > gl_RayTminEXT && t0 < gl_RayTmaxEXT) {
+        float y = O.y + t0 * D.y;
+        if (abs(y) <= height * 0.5) tHit = t0;
+    }
+    if (tHit < 0.0 && t1 > gl_RayTminEXT && t1 < gl_RayTmaxEXT) {
+        float y = O.y + t1 * D.y;
+        if (abs(y) <= height * 0.5) tHit = t1;
+    }
+
+    if (tHit > 0.0) {
+        vec3 hitPos = O + tHit * D;
+        attribs = normalize(vec3(hitPos.x, 0.0, hitPos.z)); // Y축 원기둥의 접선면 법선
+
+        if (reportIntersectionEXT(tHit, 0)) 
+        {
+        }
+    }
+}

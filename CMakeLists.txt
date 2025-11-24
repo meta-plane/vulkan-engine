@@ -21,49 +21,6 @@ if(NOT DEFINED EVA_EXTERNAL_DIR)
 endif()
 
 
-################################################################################
-# SPIRV-Tools (check if already configured by parent)
-################################################################################
-if(NOT TARGET SPIRV-Tools)
-    message(STATUS "[EVA] Configuring SPIRV-Tools...")
-    set(SPIRV-Headers_SOURCE_DIR "${EVA_EXTERNAL_DIR}/spirv-headers")
-    set(mimalloc_SOURCE_DIR "${EVA_EXTERNAL_DIR}/mimalloc")
-    add_subdirectory(${EVA_EXTERNAL_DIR}/SPIRV-Tools EXCLUDE_FROM_ALL)
-    message(STATUS "[EVA] SPIRV-Tools configuration completed.")
-else()
-    message(STATUS "[EVA] Using existing SPIRV-Tools target")
-endif()
-
-################################################################################
-# SPIRV-Reflect (check if already configured by parent)
-################################################################################
-if(NOT TARGET spirv-reflect-static)
-    message(STATUS "[EVA] Configuring SPIRV-Reflect...")
-    set(SPIRV_REFLECT_EXECUTABLE OFF CACHE BOOL "Build spirv-reflect executable")
-    set(SPIRV_REFLECT_STATIC_LIB ON CACHE BOOL "Build a SPIRV-Reflect static library")
-    add_subdirectory(${EVA_EXTERNAL_DIR}/SPIRV-Reflect EXCLUDE_FROM_ALL)
-    message(STATUS "[EVA] SPIRV-Reflect configuration completed.")
-else()
-    message(STATUS "[EVA] Using existing SPIRV-Reflect target")
-endif()
-
-################################################################################
-# glslang (check if already configured by parent)
-################################################################################
-if(NOT TARGET glslang)
-    message(STATUS "[EVA] Configuring glslang...")
-    set(BUILD_EXTERNAL OFF CACHE BOOL "Disable building external dependencies")
-    set(ALLOW_EXTERNAL_SPIRV_TOOLS ON CACHE BOOL "Allow external SPIRV-Tools")
-    set(ENABLE_HLSL OFF CACHE BOOL "Disable HLSL support")
-    set(ENABLE_RTTI ON CACHE BOOL "Enable RTTI for glslang")
-    set(ENABLE_GLSLANG_BINARIES OFF CACHE BOOL "Disable glslang binaries")
-    set(SKIP_SPIRV_TOOLS_INSTALL ON CACHE BOOL "Skip installation of SPIRV-Tools")
-    set(SPIRV_SKIP_EXECUTABLES ON CACHE BOOL "Skip building SPIRV-Tools executables")
-    add_subdirectory(${EVA_EXTERNAL_DIR}/glslang EXCLUDE_FROM_ALL)
-    message(STATUS "[EVA] glslang configuration completed.")
-else()
-    message(STATUS "[EVA] Using existing glslang target")
-endif()
 
 ################################################################################
 # GLFW (check if already configured by parent)
@@ -79,18 +36,31 @@ else()
 endif()
 
 
+################################################################################
+# SPIRV-Reflect
+################################################################################
+if (Vulkan_FOUND)
+    message(STATUS "[SPIRV-Reflect] Configuring SPIRV-Reflect...")
+    set(SPIRV_REFLECT_EXECUTABLE OFF CACHE BOOL "Build spirv-reflect executable")
+    set(SPIRV_REFLECT_STATIC_LIB ON CACHE BOOL "Build a SPIRV-Reflect static library")
+    # set(SPIRV_REFLECT_EXAMPLES OFF CACHE BOOL "Build the SPIRV-Reflect example programs")
+    # set(SPIRV_REFLECT_ENABLE_ASSERTS ON CACHE BOOL "Enable asserts for debugging")
+    add_subdirectory(external/SPIRV-Reflect)
+    message(STATUS "[SPIRV-Reflect] SPIRV-Reflect configuration completed.")
+endif()
+
 
 ################################################################################
 # EVA Library
 ################################################################################
 # Create static library
-add_library(eva STATIC 
+add_library(eva STATIC
     src/eva-runtime.cpp
-    src/spirvHelpers.cpp
+    src/eva-spirv-reflect.cpp
 
     src/eva-runtime.h
     src/eva-enums.h
-    src/error.h
+    src/eva-error.h
     src/eva-native-factory.h
 )
 
@@ -108,8 +78,6 @@ target_link_libraries(eva
         glfw
     PRIVATE
         spirv-reflect-static
-        glslang
-        glslang-default-resource-limits
 )
 
 # Compiler definitions
